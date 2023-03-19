@@ -35,6 +35,11 @@ public class SecurityConfig {
                 .loginPage("/login")
                 .defaultSuccessUrl("/restaurant", true)
                 .permitAll()
+
+        .and()
+                .oauth2Login()
+                .defaultSuccessUrl("/restaurant", true)
+
         .and()
                 .logout()
                 .logoutUrl("/logout")

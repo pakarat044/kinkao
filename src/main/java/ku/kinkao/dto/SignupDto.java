@@ -1,5 +1,6 @@
 package ku.kinkao.dto;
 
+import ku.kinkao.validation.ValidPassword;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -15,7 +16,8 @@ public class SignupDto {
     private String username;
 
     @NotBlank
-    @Size(min=12, max=128, message = "Password must have at least 12 characters")
+    @ValidPassword
+    //@Size(min=12, max=128, message = "Password must have at least 12 characters")
     private String password;
 
     @NotBlank(message = "First name is required")

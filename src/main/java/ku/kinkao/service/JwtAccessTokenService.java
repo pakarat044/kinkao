@@ -1,4 +1,5 @@
 package ku.kinkao.service;
+import ku.kinkao.dto.JwtResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -42,12 +43,14 @@ public class JwtAccessTokenService {
         requestBody.add("audience", audience);
 
         HttpEntity entity = new HttpEntity(requestBody, headers);
-        ResponseEntity<String> response =
+        ResponseEntity<JwtResponse> response =
                 restTemplate.exchange(issuer + "oauth/token",
                                         HttpMethod.POST, entity,
-                                        String.class);
+                                         JwtResponse.class);
 
-        String jwtResponse = response.getBody();
-        return jwtResponse;
+        JwtResponse jwtResponse = response.getBody();
+        token = jwtResponse.getAccessToken();
+
+        return token;
     }
 }

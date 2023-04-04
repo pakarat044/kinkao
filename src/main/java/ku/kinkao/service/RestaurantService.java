@@ -7,6 +7,8 @@ import ku.kinkao.repository.RestaurantRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ku.kinkao.dto.RestaurantRequest;
+import ku.kinkao.dto.RestaurantResponse;
 
 import java.time.Instant;
 import java.util.List;

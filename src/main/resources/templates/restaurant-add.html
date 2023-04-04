@@ -13,18 +13,22 @@
 <div class="container">
     <h1 class="display-6">Add Restaurant</h1>
 
-    <form th:action="@{/restaurant/add}" method="POST">
+    <form th:action="@{/restaurant/add}" th:object="${restaurantRequest}" method="POST">
         <div class="mb-3">
             <label for="nameInput" class="form-label">Name</label>
-            <input id="nameInput" type="text" class="form-control" name="name"> </div>
+            <input id="nameInput" type="text" class="form-control" th:field="*{name}" name="name"> </div>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}"
+             th:errors="*{name}"></div>
         <div class="mb-3">
             <label for="addressInput" class="form-label">Address</label>
-            <input id="addressInput" type="text" class="form-control" name="address">
-        </div>
+            <input id="addressInput" type="text" class="form-control" th:field="*{address}" name="address"></div>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('address')}"
+             th:errors="*{address}"></div>
         <div class="mb-3">
             <label for="ratingInput" class="form-label">Rating</label>
-            <input id="ratingInput" type="text" class="form-control" name="rating">
-        </div>
+            <input id="ratingInput" type="text" class="form-control" th:field="*{rating}" name="rating"></div>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('rating')}"
+             th:errors="*{rating}"></div>
         <button type="submit" class="btn btn-primary">Add</button>
     </form>
 </div>

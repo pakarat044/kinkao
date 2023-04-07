@@ -7,8 +7,8 @@ import ku.kinkao.repository.RestaurantRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ku.kinkao.dto.RestaurantRequest;
-import ku.kinkao.dto.RestaurantResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Instant;
 import java.util.List;
@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService {
+
+    Logger logger = LoggerFactory.getLogger(RestaurantService.class);
+
     @Autowired
     private RestaurantRepository repository;
 
@@ -48,6 +51,8 @@ public class RestaurantService {
                 Restaurant.class);
         restaurant.setCreatedAt(Instant.now());
         repository.save(restaurant);
+        logger.info("Restaurant id: " + restaurant.getId() + " created at "
+                + restaurant.getCreatedAt());
     }
 }
 

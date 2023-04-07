@@ -3,10 +3,7 @@ package ku.kinkao.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -17,6 +14,7 @@ public class Restaurant {
 
     @Id
     @GeneratedValue
+    @Column(columnDefinition = "binary(16)")
     private UUID id;
 
     private String name;
